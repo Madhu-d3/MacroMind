@@ -1,14 +1,51 @@
 # MacroMind
 
-**Smart Calorie Tracking System** — an end-to-end project demonstrating Data Engineering, Machine Learning, and LLM-powered user experience.
+AI-assisted calorie tracking platform with user-controlled predictions
 
-**Repo structure**
-- `backend/` — FastAPI backend (APIs, DB models, calorie lookup, parsers)
-- `airflow/` — ETL / daily summary dags (Prefect/Airflow)
-- `ml/` — preprocessing, training scripts, models
-- `ai/` — RAG / LLM assistant integration
-- `dashboard/` — Streamlit visualization app
-- `docs/` — architecture diagrams, design notes
+## Overview
+MacroMind is a full-stack backend-focused application that helps users log meals, track calorie intake, and analyze daily and weekly consumption using a hybrid ML + rule-based prediction system.
+
+The project is designed to mirror real-world production systems, emphasizing clean APIs, data integrity, and scalable architecture.
+
+## Key Features
+- 🔐 JWT-based authentication (signup, login, protected routes)
+- 🍽️ Smart meal logging with AI calorie prediction
+- ✍️ User override support for correcting predicted calories
+- 📅 Daily & weekly calorie summaries
+- 🎯 Deficit / surplus analysis against personalized goals
+- 📊 Streamlit UI for interactive usage
+- 🧠 Hybrid calorie prediction (rule-based + ML regression)
+
+backend/
+├── auth/ # JWT, password hashing
+├── routers/ # Users, meals, predict, stats
+├── services/ # ML logic, food parsing
+├── models.py # SQLAlchemy models
+└── main.py # App entrypoint
+
+macromind_ui/
+├── app.py # Streamlit entrypoint
+├── api.py # Backend API wrappers
+├── components.py # UI components
+└── config.py
+
+## Tech Stack
+**Backend**
+- FastAPI
+- SQLAlchemy ORM
+- PostgreSQL
+- JWT Authentication
+- Pydantic
+
+**ML / Data**
+- Rule-based food parsing
+- Linear Regression calorie estimation
+- JSON-based normalized food storage
+
+**Frontend**
+- Streamlit
+- REST API integration
+
 
 ## Project summary
 MacroMind is a calorie tracker which:
@@ -43,3 +80,33 @@ MacroMind is a calorie tracker which:
    source .venv/bin/activate   # linux/mac
    .venv\Scripts\activate      # windows
    pip install -r requirements.txt
+
+
+## Sample Workflow
+1. User signs up and sets daily calorie goal
+2. Logs meals using natural language (e.g. "2 idlis and dosa")
+3. System predicts calories using hybrid logic
+4. User optionally overrides predicted calories
+5. Meals are persisted and reflected in daily/weekly summaries
+
+## Why This Project
+This project demonstrates:
+- Backend system design & API modeling
+- Secure authentication workflows
+- Data modeling for real-world use cases
+- ML integration into production APIs
+- Clean separation of concerns
+
+## Future Enhancements
+- Model retraining with user feedback
+- Food image recognition
+- Mobile-first frontend
+- Caching & performance optimization
+- CI/CD and containerization
+
+---
+
+## Author
+**Madhu**  
+Software Development Engineer (Python, Backend, Cloud)
+
